@@ -1,0 +1,19 @@
+<h1>ADMIN/USERS_CONTROLLER#INDEX</h1>
+
+GESTION DES USERS
+
+<h2><%= link_to "Ajouter un User", new_admin_user_path, class: "btn btn-primary" %></h2>
+Liste de tous les users :
+<ul>
+  <% @all_users.order(id: "asc").each do |user| %>
+    <li>
+      <%= user.inspect %>
+      <br/><%= link_to "EDIT", edit_admin_user_path(user.id), class: "btn btn-warning" %>
+      <br/><%= button_to "SUPPR", admin_user_path(user.id), method: :delete, class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+ 

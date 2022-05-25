@@ -1,0 +1,16 @@
+<h1>ADMIN/EVENT_SUBMISSIONS_CONTROLLER#SHOW</h1>
+
+VALIDATION DES EVENT_SUBMISSIONS<br/>
+
+<%= @event_to_show.inspect %>
+<h2>TU VALIDES ?</h2>
+
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+  <h5><%= label_tag 'OUI' %></h5>
+  <%= radio_button_tag 'validated', '1' %>
+  <h5><%= label_tag 'NON' %></h5>
+  <%= radio_button_tag 'validated', '0' %>
+
+  <%= submit_tag "OK" %>
+
+<% end %>

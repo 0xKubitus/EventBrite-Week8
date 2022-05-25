@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @admin.first_name %> !</h1>
+    <p>
+      Une personne s'est inscrite pour participer à ton évènement : <%= @attendance.event.title %> du <%= @attendance.event.start_date %>.
+      <br/>
+      Il s'agit de <%= @attendance.attendee.first_name %> <%= @attendance.attendee.last_name %>
+    </p>
+    <p>
+      Pour le voir, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>

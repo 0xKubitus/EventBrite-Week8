@@ -1,0 +1,52 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Modifie tes infos</h1>
+
+          <p><a class="btn btn-info btn-lg pe-none" href="#" role="button">Dis nous tout !</a></p>
+        </div>
+      </div>
+
+      <div class="container mt-5  ">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-12">
+
+            <h3>Tes infos</h3>
+              <%= form_tag url_for(action: 'update'), method: "patch" do %>
+                <div class="row">
+
+                  <div class="col-sm-4">
+                    <h5><%= label_tag 'Prénom' %></h5>
+                    <%= text_field_tag 'first_name', @user_to_edit.first_name, class: "form-control", value: @user_to_edit.first_name  %>
+
+                    <h5><%= label_tag 'Nom' %></h5>
+                    <%= text_field_tag 'last_name', @user_to_edit.last_name, class: "form-control", value: @user_to_edit.last_name  %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <h5><%= label_tag 'Ta description' %></h5>
+                    <%= text_area_tag 'description', @user_to_edit.description, class: "form-control", value: @user_to_edit.description  %>
+                    <br/>
+                    <%= submit_tag "OK" %>
+                  </div>
+
+                </div>
+              <% end %>
+          </div>
+          
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+  <h1>Ajouter une photo</h1>
+    <%= form_tag user_profile_images_path(@user_to_edit), multipart: true do %>
+      <%= file_field_tag "profile_image" %>
+    <%= submit_tag "OK" %>
+    <% end %>

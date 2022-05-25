@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  strip_customer_id: MyString
+
+two:
+  strip_customer_id: MyString

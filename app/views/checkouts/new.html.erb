@@ -1,0 +1,25 @@
+<h1> PAGE DE CHECKOUT</h1>
+
+PAIEMENT DE L'EVENT <%= @event_to_pay.title %>
+
+<%= form_tag event_checkouts_path(@event_to_pay.id) do %>
+<article>
+  <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+  <label class="amount">
+    <span>Amount: <%= @event_to_pay.price %></span>
+  </label>
+</article>
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Achat d'un produit"
+    data-amount = <%= @stripe_amount %>
+    data-currency = "eur"
+    data-locale="auto">
+</script>
+<% end %>
+
+

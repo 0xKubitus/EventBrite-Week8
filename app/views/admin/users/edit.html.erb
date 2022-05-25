@@ -1,0 +1,40 @@
+<h1>ADMIN : PAGE D EDITION D'UN USER</h1>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <h3>Modif.</h3>
+      <%= form_tag url_for(action: 'update'), method: "patch" do %>
+        <div class="row">
+
+          <div class="col-sm-4">
+            <h5><%= label_tag 'Prénom' %></h5>
+            <%= text_field_tag 'first_name', @user_to_edit.first_name, class: "form-control", value: @user_to_edit.first_name  %>
+
+            <h5><%= label_tag 'Nom' %></h5>
+            <%= text_field_tag 'last_name', @user_to_edit.last_name, class: "form-control", value: @user_to_edit.last_name  %>
+
+            <h5><%= label_tag 'Email' %></h5> 
+            <%= text_field_tag 'email', @user_to_edit.email, class: "form-control"  %>
+
+            <h5><%= label_tag 'Mot de passe' %></h5>
+            <%= password_field_tag 'password', @user_to_edit.password, class: "form-control"  %>
+
+            <h5><%= label_tag 'Ta description' %></h5>
+            <%= text_area_tag 'description', @user_to_edit.description, class: "form-control", value: @user_to_edit.description  %>
+          </div>
+
+          <div class="col-sm-4">
+            <h5><%= label_tag 'ACCÈS ADMIN' %></h5>
+            <%= radio_button_tag 'is_app_admin', '1' %>
+            <h5><%= label_tag 'ACCÈS USER' %></h5>
+            <%= radio_button_tag 'is_app_admin', '0' %>
+            <br/>
+            <%= submit_tag "OK" %>
+          </div>
+
+        </div>
+      <% end %>
+  </div>
+
+</div>

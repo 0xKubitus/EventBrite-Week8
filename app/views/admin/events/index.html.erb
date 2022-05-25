@@ -1,0 +1,19 @@
+<h1>ADMIN/EVENTS_CONTROLLER#INDEX</h1>
+
+GESTION DES EVENTS
+
+<h2><%= link_to "Ajouter un Event", new_admin_event_path, class: "btn btn-primary" %></h2>
+Liste de tous les events :
+<ul>
+  <% @all_events.order(id: "asc").each do |event| %>
+    <li>
+      <%= event.inspect %>
+      <br/><%= link_to "EDIT", edit_admin_event_path(event.id), class: "btn btn-warning" %>
+      <br/><%= button_to "SUPPR", admin_event_path(event.id), method: :delete, class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+ 

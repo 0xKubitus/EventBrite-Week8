@@ -1,0 +1,59 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Crée ton event ! [ADMIN]</h1>
+
+          <p><a class="btn btn-info btn-lg pe-none" href="#" role="button">Attire le moooonde entier ...</a></p>
+        </div>
+      </div>
+
+      <div class="container mt-5  ">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-12">
+
+            <h3>Quels sont les détails de ton event ?</h3>
+              <%= form_tag url_for(action: 'create'), method: "post" do %>
+                <div class="row">
+
+                  <div class="col-sm-4">
+                    <h5><%= label_tag 'Date' %></h5> <!-- Le code plante en cas d'absence de saisie, voir pour forcer une value par défaut -->
+                    <%= datetime_local_field_tag 'start_date', @event_to_add.start_date, class: "form-control" %>
+
+                    <h5><%= label_tag 'Durée (en min)' %></h5>
+                    <%= number_field_tag 'duration', @event_to_add.duration, class: "form-control", value: 60 %>
+
+                    <h5><%= label_tag 'Titre' %></h5>
+                    <%= text_field_tag 'title', @event_to_add.title, class: "form-control" %>
+
+                  </div>
+
+                  <div class="col-sm-4">
+                  <h5><%= label_tag 'Description' %></h5>
+                  <%= text_area_tag 'description', @event_to_add.description, class: "form-control" %>
+
+                  <h5><%= label_tag 'Prix' %></h5>
+                  <%= number_field_tag 'price', @event_to_add.price, class: "form-control" %>
+
+                  <h5><%= label_tag 'Lieu' %></h5>
+                  <%= text_field_tag 'location', @event_to_add.location, class: "form-control" %>
+                  </div>
+
+
+                  <div class="col-sm-4 mt-5">
+                    <%= submit_tag "OK" %>
+                  </div>
+
+                </div>
+              <% end %>
+          </div>
+          
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>

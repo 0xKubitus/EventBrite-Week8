@@ -1,0 +1,9 @@
+Salut <%= @admin.first_name %> !
+=======================================
+Une personne s'est inscrite pour participer à ton évènement : <%= @attendance.event.title %> du <%= @attendance.event.start_date %>.
+
+Il s'agit de <%= @attendance.attendee.first_name %> <%= @attendance.attendee.last_name %>
+
+Pour le voir, connecte-toi via : <%= @url %>.
+
+À très vite sur monsite.fr !

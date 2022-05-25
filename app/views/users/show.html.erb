@@ -1,0 +1,49 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Ton profil</h1>
+          <p><a class="btn btn-success btn-lg pe-none" href="#" role="button">de Jetsetter</a></p>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Toi</h2>
+              <ul>
+                <li>Prénom : <%= @user_to_show.first_name %></li>
+                <li>Nom :  <%= @user_to_show.last_name %></li>
+                <li>Description : <%= @user_to_show.description %></li>
+                <li>Email :  <%= @user_to_show.email %></li>
+              </ul>
+          </div>
+          <div class="col-md-4">
+            <h2>Tes events crées</h2>
+              <ul>
+                <% @user_to_show.administrated_events.each do |event| %>
+                <li>Titre : <%= event.title %> <%= link_to "voir", event_path(event.id) %></li>
+                <% end %>
+              </ul>
+          </div>
+          <div class="col-md-4">
+            <h2>Tes paramètres</h2>
+              <%= link_to "Modifier tes identifiants", edit_user_registration_path(@user_to_show.id), class: "btn btn-warning" %>
+              <%= link_to "Modifier tes infos", edit_user_path(@user_to_show.id), class: "btn btn-secondary" %>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+<h3>Photo</h3>
+<% if @user_to_show.profile_image.attached? %>
+  <%= image_tag @user_to_show.profile_image, alt: 'profile_image' %>
+<% else %>
+  <p>=== pas encore d'image ===</p>
+<% end %>

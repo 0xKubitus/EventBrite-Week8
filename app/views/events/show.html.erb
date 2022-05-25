@@ -1,0 +1,55 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3"><%= @event_to_show.title %></h1>
+          <p><a class="btn btn-danger btn-lg pe-none" href="#" role="button">Tu vas y aller ?</a></p>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Quoi ?</h2>
+              <li><strong><%= @event_to_show.title %></strong> : <%= @event_to_show.description %></li>
+              <li>Prix : <%= @event_to_show.price %> €</li>
+              <li>Durée : <%= @event_to_show.duration/60 %> heures</li>
+              <li>Mail de l'organisateur : <%= @event_to_show.admin.email %></li>
+              <li>Nombre d'inscrits : <%= @event_to_show.attendees.size %></li>
+              <li>Date de fin : <%= @event_to_show.calc_end_date %>
+          </div>
+          <div class="col-md-4">
+            <h2>Quand ?</h2>
+              <li>Le <%= @event_to_show.start_date %></li>
+          </div>
+          <div class="col-md-4">
+            <h2>Où ?</h2>
+             <li><%= @event_to_show.location %></li>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+<h3>Image</h3>
+<% if @event_to_show.event_image.attached? %>
+  <%= image_tag @event_to_show.event_image, alt: 'event_image' %>
+<% else %>
+  <p>=== pas encore d'image ===</p>
+<% end %>
+
+
+<!-- A TRANSFORMER EN METHODE D INSTANCE POUR QUE CE SOIT PLUS LISIBLE -->
+<% if !current_user || (!@watcher_is_admin && !@watcher_is_attendee) %>
+  <%= link_to "Rejoindre l'évènement", new_event_checkout_path(@event_to_show.id), class: "btn btn-primary" %>
+<% end %>
+
+
+<% if @watcher_is_admin %>
+  <%= link_to "Mon espace évènment", event_attendances_path(@event_to_show.id), class: "btn btn-success" %>
+<% end %>
+
+

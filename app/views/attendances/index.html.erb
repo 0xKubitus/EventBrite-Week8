@@ -1,0 +1,9 @@
+ATTENDANCES#INDEX
+
+<h1>La liste des participants pour l'event <%= Event.find(params[:event_id]).title %></h1>
+
+<% @all_attendances.where(event: Event.find(params[:event_id])).each do |attendance| %>
+  <%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %> (<%= attendance.attendee.email %>)<br/>
+<% end %>
+
+<%= link_to "Gérer cet évènement", edit_event_path(@event_to_edit.id), class: "btn btn-warning" %>

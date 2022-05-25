@@ -1,0 +1,67 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Modification de l'event</h1>
+
+          <p><a class="btn btn-info btn-lg pe-none" href="#" role="button">Attire le moooonde entier ...</a></p>
+        </div>
+      </div>
+
+      <div class="container mt-5  ">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-12">
+
+            <h3>Quels sont les détails de ton event ?</h3>
+              <%= form_tag url_for(action: 'update'), method: "patch" do %>
+                <div class="row">
+
+                  <div class="col-sm-4">
+                    <h5><%= label_tag 'Date' %></h5> <!-- Le code plante en cas d'absence de saisie, voir pour forcer une value par défaut -->
+                    <%= datetime_local_field_tag 'start_date', @event_to_edit.start_date, class: "form-control" %>
+
+                    <h5><%= label_tag 'Durée (en min)' %></h5>
+                    <%= number_field_tag 'duration', @event_to_edit.duration, class: "form-control" %>
+
+                    <h5><%= label_tag 'Titre' %></h5>
+                    <%= text_field_tag 'title', @event_to_edit.title, class: "form-control" %>
+
+                  </div>
+
+                  <div class="col-sm-4">
+                  <h5><%= label_tag 'Description' %></h5>
+                  <%= text_area_tag 'description', @event_to_edit.description, class: "form-control" %>
+
+                  <h5><%= label_tag 'Prix' %></h5>
+                  <%= number_field_tag 'price', @event_to_edit.price, class: "form-control" %>
+
+                  <h5><%= label_tag 'Lieu' %></h5>
+                  <%= text_field_tag 'location', @event_to_edit.location, class: "form-control" %>
+                  </div>
+
+
+                  <div class="col-sm-4 mt-5">
+                    <%= submit_tag "OK" %>
+                  </div>
+
+                </div>
+              <% end %>
+          </div>
+          
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <%= button_to "SUPPRIMER", @event_to_edit, method: :delete, class:"btn btn-danger rounded " %>
+
+  <h1>Ajouter une photo</h1>
+    <%= form_tag event_event_images_path(@event_to_edit), multipart: true do %>
+      <%= file_field_tag "event_image" %>
+    <%= submit_tag "OK" %>
+    <% end %>
